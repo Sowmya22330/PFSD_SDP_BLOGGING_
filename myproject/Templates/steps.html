@@ -1,0 +1,180 @@
+{% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Steps</title>
+    <style>
+        /* Styles for the slideshow container */
+        .slideshow-container {
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+        }
+
+        /* Full-width images with number and caption text */
+        .mySlides {
+            display: none;
+            text-align: center; /* Align text to center */
+        }
+
+        /* Next and previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Caption text */
+        .text {
+            color: #372C1E;
+            font-size: 19px;
+            padding: 10px 20px;
+            position: absolute;
+            bottom: 250px;
+            width: 40%;
+            top: 20%;
+            left: 30%;
+            text-align: center; /* Center-align text */
+            right: -200px;
+            margin: auto; /* Center the text container horizontally */
+        }
+
+        .text h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+.text p {
+    font-size: 1em;
+    line-height: 0.9;
+    margin: 0;
+    margin-top: 10px; /* Add margin-top for spacing between h2 and p */
+    text-align: left; /* Change text alignment to left */
+    margin-left: 20px; /* Add left margin to move text to the left */
+    white-space: pre-line;
+}
+
+
+
+    </style>
+
+</head>
+
+<body>
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+            <img src="{% static 'img/step.jpg' %}" style="width:100%; height: 100%;">
+            <div class="text">
+                <h2> Choose Your Topic.</h2>
+                <p>When embarking on the journey of creating a blog, the process of choosing a topic can vary depending on whether you're establishing an online presence for an existing offline business or starting from scratch. If you already have a business, your focus is predetermined. However, for those starting anew, the key is to identify a passion or subject that genuinely excites you. Consider what you consistently discuss or read about, something that sparks your enthusiasm to write consistently. Opting for a niche within a broad topic is advisable to avoid competing with larger websites. Remember, if your chosen topic doesn't gain traction, you can always pivot and start afresh – the essential part is overcoming hesitation and getting started.</p>
+            </div>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="{% static 'img/step.jpg' %}" style="width:100%; height: 100%;">
+            <div class="text">
+                <h2> Choose a Domain Name</h2>
+                <p>Purchase a domain,If possible, use a keyword that you are targeting in your domain name.
+                    A keyword is a word that people will type into a search engine to search for a topic.
+                    A simple, memorable title for your blog is a good idea rather than something complicated o
+                    r difficult to spell. It’s usually better to leave hyphens out of your domain name.
+                    It’s always better to use a domain that ends with dot com (.com) rather than dot net
+                    (.net) or dot anything else. If readers remember the name of your blog but not what
+                    comes after the dot, they will always try .com first.</p>
+            </div>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="{% static 'img/step.jpg' %}" style="width:100%; height: 100%;">
+            <div class="text">
+                <h2> Choose Your Hosting and Theme</h2>
+                <p>After securing your domain name and hosting, the next crucial steps involve putting your blog online and customizing its appearance. Themes, serving as templates, play a pivotal role in enhancing your blog's visual appeal. Platforms like WordPress offer a range of free themes, and you can choose one or opt for a premium theme for additional features. WordPress, in particular, provides tutorials and a supportive community to guide you through theme installation. Additionally, various plugins are available to improve both visitor experiences and behind-the-scenes management. In the WordPress dashboard, you can easily search for and integrate plugins, such as contact forms, photo droppers, or editorial calendars. Some themes may require specific plugins for optimal functionality, and popular choices include Akismet for spam prevention and Yoast SEO for search engine optimization.</p>
+            </div>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="{% static 'img/step.jpg' %}" style="width:100%; height: 100%;">
+            <div class="text">
+                <h2> Plan and Write Your Content</h2>
+                <p>
+                    Once your blog is set up, focus on consistent and relevant content creation. Plan ahead with an editorial calendar, catering to your target audience's interests within your niche. Maintain focus and relevance in your posts to retain audience interest, utilizing your blogging platform's scheduling feature to post content at specified times. While daily posts aren't obligatory, regular blogging helps build and grow your audience. Interact with fellow bloggers, commit to improvement, and stay engaged to refine your writing and understanding of your audience's preferences. Make a dedicated commitment to your blog, monitor analytics to gauge content resonance, and ensure active engagement with your audience through social sharing and comments.</p>
+            </div>
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+
+    <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+
+        // Stop slideshow after the 5th slide
+        if (slideIndex === 5) {
+            clearInterval(interval);
+        }
+    }
+
+    // Auto-advance to the next slide every 5 seconds
+    var interval = setInterval(function() { plusSlides(1); }, 5000);
+</script>
+
+</body>
+
+</html>
