@@ -1,7 +1,10 @@
+import re
 
+from django.contrib import messages
 from django.shortcuts import render, redirect
 
-from myproject.myapp.models import User
+from .forms import  UserForm
+from .models import User
 
 
 # Create your views here.
@@ -35,22 +38,41 @@ def travel(request):
 def create(request):
     return render(request, 'create.html')
 
-
 def register_user(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
+        # Get form data from POST request
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
 
-        # Create a new user
-        user = User.objects.create_user(username=username, email=email, password=password)
+        # Check if username starts with an alphabet
+        if not re.match("^[a-zA-Z]", username):
+            messages.error(request, "Username must start with an alphabet")
+            return redirect('/signup')
 
-        # You might want to create a UserProfile instance as well if needed
-        # user_profile = UserProfile.objects.create(user=user, other_fields=values)
+        # Check if email ends with "@gmail.com"
+        if not email.endswith("@gmail.com"):
+            messages.error(request, "Email must end with @gmail.com")
+            return redirect('/signup')
 
-        # Optionally, you can also login the user after registration
-        # login(request, user)
+        # Check if password contains at least one uppercase letter, one special character, and one digit
+        if not re.match("^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*\d).*$", password):
+            messages.error(request, "Password must contain at least one uppercase letter, one special character, and one digit")
+            return redirect('/signup')
 
-        return redirect('signup')  # Redirect to login page after successful registration
+        # Create a new User object with the form data
+        new_user = User(username=username, email=email, password=password)
 
-    return render(request, 'registration/register.html')
+        # Save the user object to the database
+        new_user.save()
+
+        # Redirect to a success page or any other page
+        messages.success(request, "New account created, login to continue")
+        return redirect('/signup')
+
+    else:
+        # Pass any existing messages to the template context
+        messages.get_messages(request)
+
+        # Handle GET request if needed
+        return render(request, 'signup.html')

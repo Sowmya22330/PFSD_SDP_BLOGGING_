@@ -1,0 +1,274 @@
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>food</title>
+</head>
+<style>
+     .media.media-news {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            position: relative;
+            padding-bottom: 210px;
+        }
+
+        @media (min-width: 768px) {
+            .media.media-news {
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .media.media-news {
+                padding-bottom: 25px;
+                margin-bottom: 0;
+            }
+        }
+
+        .media.media-news .media-body {
+            padding: 20px;
+            box-shadow: 0 22px 28px 0 rgba(0, 0, 0, 0.06);
+            background: #fff;
+            position: absolute;
+            width: 85%;
+            right: 0;
+            bottom: 0;
+        }
+
+        @media (min-width: 768px) {
+            .media.media-news .media-body {
+                position: relative;
+                padding: 46.5px 35px;
+                right: 0;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .media.media-news .media-body {
+                right: 40px;
+                bottom: 0;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .media.media-news .media-body {
+                position: absolute;
+                right: 35px;
+                width: 60%;
+                padding: 20px;
+            }
+        }
+
+        .media.media-news .media-body .media-date {
+            font-family: "Open Sans", sans-serif;
+            color: #848484;
+            margin-bottom: 10px;
+        }
+
+        .media.media-news .media-body h5 {
+            font-size: 22px;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .media.media-news .media-body h5.small {
+            font-size: 16px;
+        }
+
+        .media.media-news .media-body p {
+            font-family: "Open Sans", sans-serif;
+            color: #848484;
+        }
+
+        .media.media-news .media-body .common-btn {
+            margin-top: 10px;
+        }
+     .media-img img {
+            max-width: 60%;
+            height: auto;
+        }
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #713F1D; /* Fixed background color */
+}
+h1 {
+  color: #fff; /* Change color of the heading */
+  margin-top: 20px; /* Adjust spacing from the top */
+}
+nav {
+  margin-top: 20px; /* Adjust spacing from the heading */
+  display: flex;
+  justify-content: center; /* Align navbar items in the center horizontally */
+}
+nav a {
+  position: relative;
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: 0.5s;
+}
+nav a:hover {
+  color: #8ef;
+}
+nav a span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-bottom: 2px solid #bef;
+  border-radius: 15px;
+  transform: scale(0) translateY(50px);
+  opacity: 0;
+  transition: 0.5s;
+}
+nav a:hover span {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+/* Dropdown menu styles */
+.dropdown {
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+    .media-img img {
+    max-width: 60%; /* Ensure images don't exceed their container's width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 15px; /* Add rounded corners for a better look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+}
+
+
+</style>
+<body>
+<h1>STORY BYTE</h1>
+<nav>
+<a href="#">Home <span></span></a>
+<div class="dropdown">
+  <a href="#">Blogs <span></span></a>
+  <div class="dropdown-content">
+    <a href="/food">Food Blogs<span></span></a>
+    <a href="/travel">Travel Blogs<span></span></a>
+    <a href="#">Other Category 1</a>
+    <a href="#">Other Category 2</a>
+  </div>
+</div>
+<a href="/create">Create Blog <span></span></a>
+<a href="#">About <span></span></a>
+<a href="#">Logout <span></span></a>
+</nav>
+<div class="container">
+    <div class="row no-gutters">
+        <div class="col-xl-6 col-12 mb-5 mb-xl-0">
+            <div class="media media-news">
+                <div class="media-img">
+                    <img src="{% static 'img/travel1.jpg' %}" alt="Generic placeholder image">
+                </div>
+                <div class="media-body">
+
+                    <h5 class="mt-0 sep">The Ghats and Ganga Aarti </h5>
+                    <p>
+As dawn breaks, the ghats come alive. Devotees bathe in the holy river, seeking purification. The evening Ganga Aarti at Dashashwamedh Ghat is a symphony of fire, incense, and devotion—a celestial spectacle that leaves you spellbound.
+
+.</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6 col-12">
+            <div class="media media-news">
+                <div class="media-img">
+                    <img src="{% static 'img/travel2.jpg' %}" alt="Generic placeholder image">
+                </div>
+                <div class="media-body">
+
+                    <h5 class="mt-0 sep"> Rome: Where Legends Reside
+</h5>
+                    <p>Roma, as the locals affectionately call it, is more than a city—it’s a living museum. Here, ancient ruins coexist with espresso-sipping cafes, and Renaissance masterpieces adorn piazzas. Let’s unravel the layers of Rome, where past and present dance in eternal harmony.
+</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row no-gutters mt-4">
+        <div class="col-xl-6 col-12 mb-5 mb-xl-0">
+            <div class="media media-news">
+                <div class="media-img">
+                    <img src="{% static 'img/travel3.jpg' %}" alt="Generic placeholder image">
+                </div>
+                <div class="media-body">
+
+                    <h5 class="mt-0 sep">Bali: Where Paradise Meets Culture</h5>
+                    <p> Welcome to the enchanting island of Bali, where lush jungles, pristine beaches, and ancient temples coexist in perfect harmony. Whether you’re a first-time visitor or a seasoned traveler, Bali promises an unforgettable experience. Let’s dive into the heart of this tropical gem.
+</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6 col-12">
+            <div class="media media-news">
+                <div class="media-img">
+                    <img src="{% static 'img/travel4.jpg' %}" alt="Generic placeholder image">
+                </div>
+                <div class="media-body">
+
+                    <h5 class="mt-0 sep"> Kodaikanal: Where Mist and Magic Meet</h5>
+                    <p>Nestled in the Palani Hills of Tamil Nadu, Kodaikanal beckons travelers with its misty landscapes, serene lakes, and lush forests. Aptly named “The Gift of the Forest,” this hill station is a haven for nature lovers, adventure seekers, and those seeking solace. Let’s explore the enchanting world of Kodaikanal.
+</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var navbarToggle = document.getElementById('navbar-toggle');
+        var navbarMenu = document.getElementById('navbar-menu');
+
+        navbarToggle.addEventListener('click', function () {
+            if (navbarMenu.style.display === 'none' || navbarMenu.style.display === '') {
+                navbarMenu.style.display = 'block';
+            } else {
+                navbarMenu.style.display = 'none';
+            }
+        });
+    });
+</script>
+</body>

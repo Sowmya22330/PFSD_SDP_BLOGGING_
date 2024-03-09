@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>food</title>
+</head>
+<style>
+     .media.media-news {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            position: relative;
+            padding-bottom: 210px;
+        }
+
+        @media (min-width: 768px) {
+            .media.media-news {
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .media.media-news {
+                padding-bottom: 25px;
+                margin-bottom: 0;
+            }
+        }
+
+        .media.media-news .media-body {
+            padding: 20px;
+            box-shadow: 0 22px 28px 0 rgba(0, 0, 0, 0.06);
+            background: #fff;
+            position: absolute;
+            width: 85%;
+            right: 0;
+            bottom: 0;
+        }
+
+        @media (min-width: 768px) {
+            .media.media-news .media-body {
+                position: relative;
+                padding: 46.5px 35px;
+                right: 0;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .media.media-news .media-body {
+                right: 40px;
+                bottom: 0;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .media.media-news .media-body {
+                position: absolute;
+                right: 35px;
+                width: 60%;
+                padding: 20px;
+            }
+        }
+
+        .media.media-news .media-body .media-date {
+            font-family: "Open Sans", sans-serif;
+            color: #848484;
+            margin-bottom: 10px;
+        }
+
+        .media.media-news .media-body h5 {
+            font-size: 22px;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .media.media-news .media-body h5.small {
+            font-size: 16px;
+        }
+
+        .media.media-news .media-body p {
+            font-family: "Open Sans", sans-serif;
+            color: #848484;
+        }
+
+        .media.media-news .media-body .common-btn {
+            margin-top: 10px;
+        }
+
+</style>
+<body>
+<div class="container">
+    <div class="row no-gutters">
+        <div class="col-xl-6 col-12 mb-5 mb-xl-0">
+            <div class="media media-news">
+                <div class="media-img">
+                    <img src="https://www.bootdey.com/image/350x280/FFB6C1/000000" alt="Generic placeholder image">
+                </div>
+                <div class="media-body">
+                    <span class="media-date">25 july 2017</span>
+                    <h5 class="mt-0 sep">Finibus Bonorum Malor.</h5>
+                    <p>Lorem ipsum dolor amet consectetur adip sicing elit sed eiusm tempor incididunt ut labore dolore.</p>
+                    <a href="blog-post-right-sidebar.html" class="btn btn-transparent">View More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6 col-12">
+            <div class="media media-news">
+                <div class="media-img">
+                    <img src="https://www.bootdey.com/image/350x280/87CEFA/000000" alt="Generic placeholder image">
+                </div>
+                <div class="media-body">
+                    <span class="media-date">13 August 2018</span>
+                    <h5 class="mt-0 sep"> Tincidunt dui ornare</h5>
+                    <p>Facilisi morbi tempus iaculis urna id volutpat lacus. Mi eget mauris pharetra et. Fermentum iaculis</p>
+                    <a href="blog-post-right-sidebar.html" class="btn btn-transparent">View More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row no-gutters mt-4">
+        <div class="col-xl-6 col-12 mb-5 mb-xl-0">
+            <div class="media media-news">
+                <div class="media-img">
+                    <img src="https://www.bootdey.com/image/350x280/FF7F50/000000" alt="Generic placeholder image">
+                </div>
+                <div class="media-body">
+                    <span class="media-date">25 july 2017</span>
+                    <h5 class="mt-0 sep">Finibus Bonorum Malor.</h5>
+                    <p>Lorem ipsum dolor amet consectetur adip sicing elit sed eiusm tempor incididunt ut labore dolore.</p>
+                    <a href="blog-post-right-sidebar.html" class="btn btn-transparent">View More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6 col-12">
+            <div class="media media-news">
+                <div class="media-img">
+                    <img src="https://www.bootdey.com/image/350x280/20B2AA/000000" alt="Generic placeholder image">
+                </div>
+                <div class="media-body">
+                    <span class="media-date">13 August 2018</span>
+                    <h5 class="mt-0 sep"> Tincidunt dui ornare</h5>
+                    <p>Facilisi morbi tempus iaculis urna id volutpat lacus. Mi eget mauris pharetra et. Fermentum iaculis</p>
+                    <a href="blog-post-right-sidebar.html" class="btn btn-transparent">View More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var navbarToggle = document.getElementById('navbar-toggle');
+        var navbarMenu = document.getElementById('navbar-menu');
+
+        navbarToggle.addEventListener('click', function () {
+            if (navbarMenu.style.display === 'none' || navbarMenu.style.display === '') {
+                navbarMenu.style.display = 'block';
+            } else {
+                navbarMenu.style.display = 'none';
+            }
+        });
+    });
+</script>
+</body>
+
+</html>
