@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .scroll-container {
+    max-height: 600px; /* Adjust the maximum height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 100px; /* Add padding for better aesthetics */
+}
+
+.blog-post {
+    margin-bottom: 20px; /* Add margin between blog posts */
+}
+       .blog-container {
+
+        max-width: 600px; /* Adjust the maximum width as needed */
+        margin: 20px auto;
+        border: 1px solid #ddd; /* Border color */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow */
+        padding: 20px;
+        border-radius: 8px;
+        position: relative;
+         width: 600px; /* Adjust the width as needed */
+    margin: 20px auto;
+    }
+
+
+
+    .blog-header {
+        /* Your existing styles for the blog header */
+    }
+
+    .blog-meta {
+        /* Your existing styles for the blog meta */
+    }
+
+    .options {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    .options-menu {
+        display: none;
+        position: absolute;
+        top: 30px;
+        right: 0;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        border-radius: 20px;
+        padding: 5px 0;
+        z-index: 1;
+        color: black
+    }
+
+    .options-menu li {
+        list-style: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .options-menu li:hover {
+        background-color: #f0f0f0;
+    }
+
+    .report-option {
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .report-option:hover {
+        background-color: #f0f0f0;
+    }
+    .blog-title {
+        /* Your existing styles for the blog title */
+    }
+
+    .blog-content {
+        /* Your existing styles for the blog content */
+    }
+
+   .blog-feedback {
+        /* Your existing styles for the blog feedback */
+        margin-top: 10px;
+    }
+     .like-btn,
+    .dislike-btn {
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .like-btn:hover,
+    .dislike-btn:hover {
+        color: #ff6347; /* Change to your preferred hover color */
+    }
+
+    .like-btn.clicked,
+    .dislike-btn.clicked {
+        color: #008000; /* Change to your preferred clicked color */
+    }
+    body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0d8cc; /* Light coffee background */
+    color: #5e4938; /* Dark coffee text color */
+    margin: 0;
+    padding: 0;
+}
+
+</style>
+<body>
+<h1>BLOGS</h1>
+<div id="blog-posts" class="scroll-container">
+    {% for blog in blogs %}
+    <div class="blog-container">
+        <div class="blog-post">
+            <div class="blog-header">
+                <div class="blog-meta">
+                    <span>@{{ blog.username }}</span>
+                    <div class="options" onclick="toggleOptionsMenu()">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <ul class="options-menu" id="optionsMenu">
+                            <li onclick="reportPost()">Report</li>
+                        </ul>
+                    </div>
+                </div>
+                <h1 class="blog-title">{{ blog.title }}</h1>
+            </div>
+            <div class="blog-content">
+                <p>{{ blog.content }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>

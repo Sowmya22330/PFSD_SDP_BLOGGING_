@@ -1,105 +1,209 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>food</title>
 </head>
 <style>
-     .media.media-news {
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            position: relative;
-            padding-bottom: 210px;
-        }
+   .media.media-news {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  padding-bottom: 210px;
+}
 
-        @media (min-width: 768px) {
-            .media.media-news {
-                padding-bottom: 0;
-                margin-bottom: 0;
-            }
-        }
+@media (min-width: 768px) {
+  .media.media-news {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
 
-        @media (min-width: 1200px) {
-            .media.media-news {
-                padding-bottom: 25px;
-                margin-bottom: 0;
-            }
-        }
+@media (min-width: 1200px) {
+  .media.media-news {
+    padding-bottom: 25px;
+    margin-bottom: 0;
+  }
+}
 
-        .media.media-news .media-body {
-            padding: 20px;
-            box-shadow: 0 22px 28px 0 rgba(0, 0, 0, 0.06);
-            background: #fff;
-            position: absolute;
-            width: 85%;
-            right: 0;
-            bottom: 0;
-        }
+.media.media-news .media-body {
+  padding: 20px;
+  box-shadow: 0 22px 28px 0 rgba(0, 0, 0, 0.06);
+  background: #fff; /* Light coffee background color */
+  position: absolute;
+  width: 85%;
+  right: 0;
+  bottom: 0;
+}
 
-        @media (min-width: 768px) {
-            .media.media-news .media-body {
-                position: relative;
-                padding: 46.5px 35px;
-                right: 0;
-            }
-        }
+@media (min-width: 768px) {
+  .media.media-news .media-body {
+    position: relative;
+    padding: 46.5px 35px;
+    right: 0;
+  }
+}
 
-        @media (min-width: 992px) {
-            .media.media-news .media-body {
-                right: 40px;
-                bottom: 0;
-            }
-        }
+@media (min-width: 992px) {
+  .media.media-news .media-body {
+    right: 40px;
+    bottom: 0;
+  }
+}
 
-        @media (min-width: 1200px) {
-            .media.media-news .media-body {
-                position: absolute;
-                right: 35px;
-                width: 60%;
-                padding: 20px;
-            }
-        }
+@media (min-width: 1200px) {
+  .media.media-news .media-body {
+    position: absolute;
+    right: 35px;
+    width: 60%;
+    padding: 20px;
+  }
+}
 
-        .media.media-news .media-body .media-date {
-            font-family: "Open Sans", sans-serif;
-            color: #848484;
-            margin-bottom: 10px;
-        }
+.media.media-news .media-body .media-date {
+  font-family: "Open Sans", sans-serif;
+  color: #333; /* Light/mid-tone gray for text */
+  margin-bottom: 10px;
+}
 
-        .media.media-news .media-body h5 {
-            font-size: 22px;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
+.media.media-news .media-body h5 {
+  font-size: 22px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  color: #666; /* Darker gray for headings */
+}
 
-        .media.media-news .media-body h5.small {
-            font-size: 16px;
-        }
+.media.media-news .media-body h5.small {
+  font-size: 16px;
+}
 
-        .media.media-news .media-body p {
-            font-family: "Open Sans", sans-serif;
-            color: #848484;
-        }
+.media.media-news .media-body p {
+  font-family: "Open Sans", sans-serif;
+  color: #333; /* Light/mid-tone gray for text */
+}
 
-        .media.media-news .media-body .common-btn {
-            margin-top: 10px;
-        }
+.media.media-news .media-body .common-btn {
+  margin-top: 10px;
+}
+
+.media-img img {
+  max-width: 70%; /* Adjusted max-width for the images */
+  height: auto;
+}
+body {
+  background: linear-gradient(to right, #f2e8e4, #e5c09b); /* Light coffee to darker coffee gradient */
+  height: 100vh; /* Fills entire viewport height */
+  margin: 0;
+}
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #CEAB76; /* Fixed background color */
+}
+h1 {
+  color: #fff; /* Change color of the heading */
+  margin-top: 20px; /* Adjust spacing from the top */
+}
+nav {
+  margin-top: 20px; /* Adjust spacing from the heading */
+  display: flex;
+  justify-content: center; /* Align navbar items in the center horizontally */
+}
+nav a {
+  position: relative;
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: 0.5s;
+}
+nav a:hover {
+  color: #8ef;
+}
+nav a span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-bottom: 2px solid #bef;
+  border-radius: 15px;
+  transform: scale(0) translateY(50px);
+  opacity: 0;
+  transition: 0.5s;
+}
+nav a:hover span {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+/* Dropdown menu styles */
+.dropdown {
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
 
 </style>
 <body>
+<h1>STORY BYTE</h1>
+<nav>
+<a href="/allblogs/{{username}}">Home <span></span></a>
+<div class="dropdown">
+  <a href="#">Blogs <span></span></a>
+  <div class="dropdown-content">
+    <a href="/food">Food Blogs<span></span></a>
+    <a href="/travel">Travel Blogs<span></span></a>
+
+  </div>
+</div>
+<a href="/new/{{username}}">Create Blog <span></span></a>
+
+<a href="#">About <span></span></a>
+<a href="#">Logout <span></span></a>
+</nav>
 <div class="container">
     <div class="row no-gutters">
         <div class="col-xl-6 col-12 mb-5 mb-xl-0">
             <div class="media media-news">
                 <div class="media-img">
-                    <img src="https://www.bootdey.com/image/350x280/FFB6C1/000000" alt="Generic placeholder image">
+                    <img src="{% static 'img/food1.jpg' %}" alt="Generic placeholder image">
                 </div>
                 <div class="media-body">
                     <span class="media-date">25 july 2017</span>
-                    <h5 class="mt-0 sep">Finibus Bonorum Malor.</h5>
-                    <p>Lorem ipsum dolor amet consectetur adip sicing elit sed eiusm tempor incididunt ut labore dolore.</p>
-                    <a href="blog-post-right-sidebar.html" class="btn btn-transparent">View More</a>
+                    <h5 class="mt-0 sep">The Cup of Life: A Journey Through Tea.</h5>
+                    <p>Hello, fellow tea enthusiasts! Welcome to The Cup of Life, a blog devoted to all things tea.
+                        Whether you’re a seasoned sipper or just dipping your toes into the aromatic world of tea, this cozy corner is for you.
+                        Let’s explore, learn, and savor together!.So, the next time you brew a pot of tea, take a moment to pause, to breathe,
+                        and to savor the beauty and complexity that lies within each fragrant sip.</p>
+
                 </div>
             </div>
         </div>
@@ -107,13 +211,19 @@
         <div class="col-xl-6 col-12">
             <div class="media media-news">
                 <div class="media-img">
-                    <img src="https://www.bootdey.com/image/350x280/87CEFA/000000" alt="Generic placeholder image">
+                    <img src="{% static 'img/food2.jpg' %}" alt="Generic placeholder image">
                 </div>
                 <div class="media-body">
                     <span class="media-date">13 August 2018</span>
-                    <h5 class="mt-0 sep"> Tincidunt dui ornare</h5>
-                    <p>Facilisi morbi tempus iaculis urna id volutpat lacus. Mi eget mauris pharetra et. Fermentum iaculis</p>
-                    <a href="blog-post-right-sidebar.html" class="btn btn-transparent">View More</a>
+                    <h5 class="mt-0 sep">The Sweet Symphony: A Journey Through Cake Delights</h5>
+                    <p>Hello, dear readers! Welcome to The Sweet Symphony, a blog where sugar, flour, and creativity waltz together to create edible masterpieces 🍰.
+                        A Slice of Happiness
+                             Perhaps the greatest pleasure of cakes lies in sharing them with others.
+                        Whether it's a simple afternoon tea with friends or a grand celebration with loved ones,
+                        cakes have a way of bringing people together, fostering laughter, conversation, and camaraderie.
+                           In the tapestry of life, cakes add color, sweetness, and joy.
+                        They are symbols of love, celebration, and the simple pleasures that make life worth savoring.</p>
+
                 </div>
             </div>
         </div>
@@ -123,13 +233,21 @@
         <div class="col-xl-6 col-12 mb-5 mb-xl-0">
             <div class="media media-news">
                 <div class="media-img">
-                    <img src="https://www.bootdey.com/image/350x280/FF7F50/000000" alt="Generic placeholder image">
+                    <img src="{% static 'img/food3.jpg' %}" alt="Generic placeholder image">
                 </div>
                 <div class="media-body">
                     <span class="media-date">25 july 2017</span>
-                    <h5 class="mt-0 sep">Finibus Bonorum Malor.</h5>
-                    <p>Lorem ipsum dolor amet consectetur adip sicing elit sed eiusm tempor incididunt ut labore dolore.</p>
-                    <a href="blog-post-right-sidebar.html" class="btn btn-transparent">View More</a>
+                    <h5 class="mt-0 sep">The Sweet Delight of Gulab Jamun: A Journey Through Indulgenc
+.</h5>
+                    <p>A Sweet Legacy
+In the rich tapestry of Indian cuisine, Gulab Jamun shines as a jewel of sweetness and indulgence.
+                        Its legacy is woven into the fabric of cultural traditions, celebrations, and cherished memories,
+                        reminding us of the simple pleasures and profound connections that unite us all.So the next time you savor a piece of Gulab Jamun,
+                        take a moment to appreciate the history, heritage,
+                        and heartwarming flavors that make it a true icon of Indian culinary excellence.
+                        After all, in the world of desserts, few delights can compare to the timeless allure of Gulab Jamun.
+.</p>
+
                 </div>
             </div>
         </div>
@@ -137,13 +255,20 @@
         <div class="col-xl-6 col-12">
             <div class="media media-news">
                 <div class="media-img">
-                    <img src="https://www.bootdey.com/image/350x280/20B2AA/000000" alt="Generic placeholder image">
+                    <img src="{% static 'img/food4.jpg' %}" alt="Generic placeholder image">
                 </div>
                 <div class="media-body">
                     <span class="media-date">13 August 2018</span>
-                    <h5 class="mt-0 sep"> Tincidunt dui ornare</h5>
-                    <p>Facilisi morbi tempus iaculis urna id volutpat lacus. Mi eget mauris pharetra et. Fermentum iaculis</p>
-                    <a href="blog-post-right-sidebar.html" class="btn btn-transparent">View More</a>
+                    <h5 class="mt-0 sep"> Exploring the Culinary Universe: A Journey Through the World of Food</h5>
+                    <p>The Joy of Exploration
+One of the greatest pleasures of food is the thrill of discovery. From hidden gems tucked away in bustling alleyways to
+                        world-renowned restaurants pushing the boundaries of culinary innovation,
+                        the journey of exploration is endless.
+                        Every bite is an opportunity to awaken the senses,
+                        to embark on a sensory adventure that transports us to distant lands and tantalizes our taste
+                        buds with new and unexpected flavors.🫓🫖
+</p>
+
                 </div>
             </div>
         </div>
@@ -165,5 +290,3 @@
     });
 </script>
 </body>
-
-</html>

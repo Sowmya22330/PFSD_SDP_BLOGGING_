@@ -99,7 +99,7 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background: #713F1D; /* Fixed background color */
+  background: #CEAB76; /* Fixed background color */
 }
 h1 {
   color: #fff; /* Change color of the heading */
@@ -181,13 +181,12 @@ nav a:hover span {
   <div class="dropdown-content">
     <a href="/food">Food Blogs<span></span></a>
     <a href="/travel">Travel Blogs<span></span></a>
-    <a href="#">Other Category 1</a>
-    <a href="#">Other Category 2</a>
+
   </div>
 </div>
-<a href="/create">Create Blog <span></span></a>
+<a href="/new/{{username}}">Create Blog <span></span></a>
 <a href="#">About <span></span></a>
-<a href="#">Logout <span></span></a>
+<a href="/signup">Logout <span></span></a>
 </nav>
 <div class="container">
     <div class="row no-gutters">
