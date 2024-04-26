@@ -20,7 +20,7 @@
     }
 
     .card {
-        height: 350px;
+        height: 390px;
         margin-top: auto;
         margin-bottom: auto;
         width: 400px;
@@ -92,6 +92,7 @@
     }
 
 </style>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <body style="background-image: url('{% static 'img/bloglogin.jpg' %}'); background-size: cover; background-repeat: no-repeat; height: 100%; font-family: 'Numans', sans-serif;">
 
@@ -119,6 +120,7 @@
                         <input type="password" class="form-control" placeholder="Password" name="password">
                     </div>
 
+                   <div class="g-recaptcha" data-sitekey="6Lew2McpAAAAAECHjX-P0NDhdBD0CjgYtYbJFsW9"></div>
                     <div class="form-group">
                         <input type="submit" value="Login" class="btn float-right login_btn">
                     </div>

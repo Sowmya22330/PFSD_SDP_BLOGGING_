@@ -276,87 +276,80 @@ button:hover {
 <body>
 <h1>STORY BYTE</h1>
 <nav>
-    <a href="/allblogs/{{username}}">Home <span></span></a>
+    <a href="/allblogs/{{username}}">Home<span></span></a>
     <div class="dropdown">
         <a href="#">Blogs <span></span></a>
         <div class="dropdown-content">
             <a href="/food">Food Blogs<span></span></a>
             <a href="/travel">Travel Blogs<span></span></a>
-            <a href="#">Other Category 1</a>
-            <a href="#">Other Category 2</a>
+
         </div>
     </div>
     <a href="/new/{{username}}">Create Blog <span></span></a>
-    <a href="#">Your Blogs <span></span></a>
-    <a href="#">About <span></span></a>
     <a href="/signup">Logout <span></span></a>
 </nav>
-<h1>Create Blog</h1>
-<form method="post" id="blog_form" action="{% url 'new' username=username %}">
-    {% csrf_token %}
-    <input type="hidden" name="username" value="{{ username }}">  <!-- Hidden input field for the username -->
+ <h1>Create Blog</h1>
+    <form method="post" id="blog_form">
+        {% csrf_token %}
 
-    <label for="title">Heading:</label><br>
-    <div id="heading_font">
-        <input type="radio" name="heading_font" value="normal" onchange="applyFontStyle('heading', this.value)"><i class="far fa-font"></i>
-        <input type="radio" name="heading_font" value="bold" onchange="applyFontStyle('heading', this.value)"><i class="fas fa-bold"></i>
-        <input type="radio" name="heading_font" value="italic" onchange="applyFontStyle('heading', this.value)"><i class="fas fa-italic"></i>
-        <input type="radio" name="heading_font" value="highlight" onchange="applyFontStyle('heading', this.value)"><i class="fas fa-highlighter"></i>
-        <input type="radio" name="heading_font" value="formal" onchange="applyFontStyle('heading', this.value)"><i class="fas fa-align-left"></i>
-        <input type="radio" name="heading_font" value="roman" onchange="applyFontStyle('heading', this.value)"><i class="fas fa-font"></i>
-        <input type="radio" name="heading_font" value="ancient" onchange="applyFontStyle('heading', this.value)"><i class="fas fa-landmark"></i>
-        <input type="radio" name="heading_font" value="latin" onchange="applyFontStyle('heading', this.value)"><i class="fas fa-language"></i>
-    </div>
+        <input type="hidden" name="username" value="{{username}}">
+        <label for="title">Heading:</label><br>
+        <div id="heading_font">
+            <input type="radio" name="heading_font" value="normal" onchange="applyFontStyle('heading', this.value)"><i class="far fa-font"></i>
+            <input type="radio" name="heading_font" value="bold" onchange="applyFontStyle('heading', this.value)"><i class="fas fa-bold"></i>
+            <input type="radio" name="heading_font" value="italic" onchange="applyFontStyle('heading', this.value)"><i class="fas fa-italic"></i>
+            <input type="radio" name="heading_font" value="highlight" onchange="applyFontStyle('heading', this.value)"><i class="fas fa-highlighter"></i>
+            <input type="radio" name="heading_font" value="formal" onchange="applyFontStyle('heading', this.value)"><i class="fas fa-align-left"></i>
+            <input type="radio" name="heading_font" value="roman" onchange="applyFontStyle('heading', this.value)"><i class="fas fa-font"></i>
+            <input type="radio" name="heading_font" value="ancient" onchange="applyFontStyle('heading', this.value)"><i class="fas fa-landmark"></i>
+            <input type="radio" name="heading_font" value="latin" onchange="applyFontStyle('heading', this.value)"><i class="fas fa-language"></i>
+        </div>
+        <textarea id="title" name="title" rows="1" cols="50"></textarea><br>
 
+        <label for="content">Content:</label><br>
+        <div id="content_font">
+<input type="radio" name="content_font" value="normal" onchange="applyFontStyle('content', this.value)"><i class="far fa-font"></i>
+            <input type="radio" name="content_font" value="bold" onchange="applyFontStyle('content', this.value)"><i class="fas fa-bold"></i>
+            <input type="radio" name="content_font" value="italic" onchange="applyFontStyle('content', this.value)"><i class="fas fa-italic"></i>
+            <input type="radio" name="content_font" value="highlight" onchange="applyFontStyle('content', this.value)"><i class="fas fa-highlighter"></i>
+            <input type="radio" name="content_font" value="formal" onchange="applyFontStyle('content', this.value)"><i class="fas fa-align-left"></i>
+            <input type="radio" name="content_font" value="roman" onchange="applyFontStyle('content', this.value)"><i class="fas fa-font"></i>
+            <input type="radio" name="content_font" value="ancient" onchange="applyFontStyle('content', this.value)"><i class="fas fa-landmark"></i>
+            <input type="radio" name="content_font" value="latin" onchange="applyFontStyle('content', this.value)"><i class="fas fa-language"></i>
+        </div>
+        <textarea id="content" name="content" rows="10" cols="50"></textarea><br>
 
+        <!-- Add file upload box for multiple files -->
 
-    <textarea id="title" name="title" rows="1" cols="50"></textarea><br>
-
-    <label for="content">Content:</label><br>
-    <div id="content_font">
-        <input type="radio" name="content_font" value="normal" onchange="applyFontStyle('content', this.value)"><i class="far fa-font"></i>
-        <input type="radio" name="content_font" value="bold" onchange="applyFontStyle('content', this.value)"><i class="fas fa-bold"></i>
-        <input type="radio" name="content_font" value="italic" onchange="applyFontStyle('content', this.value)"><i class="fas fa-italic"></i>
-        <input type="radio" name="content_font" value="highlight" onchange="applyFontStyle('content', this.value)"><i class="fas fa-highlighter"></i>
-        <input type="radio" name="content_font" value="formal" onchange="applyFontStyle('content', this.value)"><i class="fas fa-align-left"></i>
-        <input type="radio" name="content_font" value="roman" onchange="applyFontStyle('content', this.value)"><i class="fas fa-font"></i>
-        <input type="radio" name="content_font" value="ancient" onchange="applyFontStyle('content', this.value)"><i class="fas fa-landmark"></i>
-        <input type="radio" name="content_font" value="latin" onchange="applyFontStyle('content', this.value)"><i class="fas fa-language"></i>
-    </div>
-
-    <textarea id="content" name="content" rows="10" cols="50"></textarea><br>
-
-        <button type="submit">Save</button>
-
-</form>
+ <input type="submit" value="Publish Blog"> <!-- Publish Blog button -->
 
 
-<script>
-    function applyFontStyle(elementId, fontStyle) {
-        var element = document.getElementById(elementId);
+    <script>
+        function applyFontStyle(elementId, fontStyle) {
+            var element = document.getElementById(elementId);
 
-        // Remove all existing font style classes
-        element.classList.remove('bold', 'italic', 'highlight', 'formal', 'roman', 'ancient', 'latin');
+            // Remove all existing font style classes
+            element.classList.remove('bold', 'italic', 'highlight', 'formal', 'roman', 'ancient', 'latin');
 
-        // Add the appropriate font style class based on the selected option
-        if (fontStyle === 'bold') {
-            element.classList.add('bold');
-        } else if (fontStyle === 'italic') {
-            element.classList.add('italic');
-        } else if (fontStyle === 'highlight') {
-            element.classList.add('highlight');
-        } else if (fontStyle === 'formal') {
-            element.classList.add('formal');
-        } else if (fontStyle === 'roman') {
-            element.classList.add('roman');
-        } else if (fontStyle === 'ancient') {
-            element.classList.add('ancient');
-        } else if (fontStyle === 'latin') {
-            element.classList.add('latin');
-        }
-    }
+            // Add the appropriate font style class based on the selected option
+            if (fontStyle === 'bold') {
+                element.classList.add('bold');
+            } else if (fontStyle === 'italic') {
+                element.classList.add('italic');
+            } else if (fontStyle === 'highlight') {
+                element.classList.add('highlight');
+            } else if (fontStyle === 'formal') {
+                element.classList.add('formal');
+            } else if (fontStyle === 'roman') {
+                element.classList.add('roman');
+            } else if (fontStyle === 'ancient') {
+                element.classList.add('ancient');
+            } else if (fontStyle === 'latin') {
+                element.classList.add('latin');
+            }
+  }
 
 
-</script>
-</body>
+    </script>
+  </body>
 </html>

@@ -1,4 +1,5 @@
 {% load static %}
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background: #CEAB76; /* Fixed background color */
+  position: relative; /* Ensure body is relative for absolute positioning of overlay */
 }
 h1 {
   color: #fff; /* Change color of the heading */
@@ -25,6 +27,8 @@ nav {
   margin-top: 20px; /* Adjust spacing from the heading */
   display: flex;
   justify-content: center; /* Align navbar items in the center horizontally */
+  position: relative; /* Ensure navbar is relative for absolute positioning of overlay */
+  z-index: 1; /* Ensure navbar is above the overlay */
 }
 nav a {
   position: relative;
@@ -79,62 +83,20 @@ nav a:hover span {
 .dropdown-content a:hover {
   background-color: #ddd;
 }
- .image-container {
+.image-container {
   width: 100%;
-  margin-top: 20px;
+  height: 100vh; /* Full screen height */
+  overflow: hidden; /* Hide overflowing content */
+  position: relative; /* Ensure container is relative for absolute positioning of overlay */
 }
-
 .image-container img {
   width: 100%;
-  height: 80%;
+  height: auto;
+  display: block;
+  object-fit: cover; /* Cover the entire container */
+  object-position: center; /* Center the image */
 }
-
-.boxes-container {
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
-  margin-top: 20px;
-}
-
-.box {
-  width: 23%;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-  .image-overlay {
-  position: relative;
-  width: 100%;
-  height: 80%;
-}
-
-.image-overlay img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.overlay-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-}
-
-.overlay-text h2 {
-  font-size: 2em;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.overlay-text p {
-  font-size: 1.2em;
-  font-style: italic;
-}
-  .overlay {
+.overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -147,44 +109,39 @@ nav a:hover span {
   align-items: center;
   text-align: center;
 }
-
 .overlay h2 {
   color: #fff;
   font-size: 36px;
   font-weight: bold;
 }
-
 .overlay p {
   color: #fff;
   font-size: 18px;
 }
-
 </style>
 </head>
 <body>
 <h1>STORY BYTE</h1>
 <nav>
-<a href="/allblogs/{{username}}">Home <span></span></a>
-<div class="dropdown">
-  <a href="#">Blogs <span></span></a>
-  <div class="dropdown-content">
-    <a href="/food">Food Blogs<span></span></a>
-    <a href="/travel">Travel Blogs<span></span></a>
+  <a href="/allblogs/{{username}}">Home <span></span></a>
+  <div class="dropdown">
+    <a href="#">Blogs <span></span></a>
+    <div class="dropdown-content">
+      <a href="/food">Food Blogs<span></span></a>
+      <a href="/travel">Travel Blogs<span></span></a>
+      <a href="/trending">Trending Blogs<span></span></a>
 
+    </div>
   </div>
-</div>
-<a href="/new/{{username}}">Create Blog <span></span></a>
-<a href="#">About <span></span></a>
-<a href="/signup">Logout <span></span></a>
+  <a href="/new/{{username}}">Create Blog <span></span></a>
+  <a href="/feedback/{{username}}">FeedBack <span></span></a>
+  <a href="/signup">Logout <span></span></a>
 </nav>
 <div class="image-container">
-  <div class="image-overlay">
-    <img src="{% static 'img/home blog.jpg' %}" alt="Image">
-    <div class="overlay">
+  <img src="{% static 'img/home blog.jpg' %}" alt="Image">
+  <div class="overlay">
     <h2>Blogging</h2>
     <p>"Write like nobody's reading, because nobody is. You can write whatever you want!"</p>
   </div>
-  </div>
 </div>
-
 </body>

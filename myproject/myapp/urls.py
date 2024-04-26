@@ -18,6 +18,10 @@ urlpatterns = [
     path('new/<str:username>/', views.new, name='new'),
     path('allblogs/<str:username>/', views.allblogs),
     path('create/', views.create),
+    path('trending/', views.trending),
 
     path('yourblogs/', views.yourblogs),
+    path('feedback/<str:username>/', views.feedback_view, name='feedback'),
+    path('admin login/', views.adminlogin),
+    path('adminblogs/', views.adminblogs, name='adminblogs'),
 ]

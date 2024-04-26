@@ -1,10 +1,12 @@
 import re
 
+import requests
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.http import request
 from django.shortcuts import render, redirect
 
-from .forms import UserForm, BlogForm
+from .forms import UserForm, BlogForm, FeedbackForm
 from .models import User, Blog
 import re
 from django.contrib import messages
@@ -22,33 +24,71 @@ def home(request):
 def signup(request):
     return render(request, 'signup.html')
 
+
 def newuser(request):
     return render(request, 'newuser.html')
+
 
 def steps(request):
     return render(request, 'steps.html')
 
+
 def aboutus(request):
     return render(request, 'aboutus.html')
+
 
 def main(request, username):
     return render(request, 'main.html', {'username': username})
 
+
 def food(request):
     return render(request, 'food.html')
+
 
 def travel(request):
     return render(request, 'travel.html')
 
+
 def create(request):
     return render(request, 'create.html')
+
 
 def yourblogs(request):
     return render(request, 'yourblogs.html')
 
+
+def feedback(request):
+    return render(request, 'feedback.html')
+
+def trending(request):
+    return render(request, 'trending.html')
+
+def adminlogin(request):
+    return render(request, 'admin login.html')
+
+def adminblogs(request):
+    return render(request, 'admin blogs.html')
+
+
 def allblogs(request, username):
     blogs = Blog.objects.all()
-    return render(request, 'allblogs.html',  {'blogs': blogs, 'username': username})
+    return render(request, 'allblogs.html', {'blogs': blogs, 'username': username})
+
+
+def feedback_view(request, username):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback = form.save(commit=False)
+            feedback.user_name = request.user
+            feedback.save()
+            return redirect('main', username=username)
+
+
+    else:
+        form = FeedbackForm()
+    return render(request, 'feedback.html', {'form': form, 'username': username})
+
 
 def register_user(request):
     if request.method == 'POST':
@@ -111,25 +151,43 @@ def register_user(request):
 
         # Handle GET request if needed
         return render(request, 'newuser.html')
+
+
 def signin_view(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        # Custom authentication logic
-        user = authenticate_user(username, password)
-
-        if user is not None:
-            # Authentication successful
-            request.session['user_id'] = user.id
-            request.session['username'] = user.username
-            return redirect(f'/main/{username}')
-        else:
-            # Authentication failed
-            error_message = "Invalid username or password"
+        # Check if reCAPTCHA response exists
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        if not recaptcha_response:
+            error_message = "reCAPTCHA verification is required."
             return render(request, 'signup.html', {'error_message': error_message})
-    else:
-        return render(request, 'signup.html')
+
+        # Verify the reCAPTCHA response
+        secret_key = '6Lew2McpAAAAAKBV0xxxSGA7-AXeomUIq_q8x4Oe'  # Replace with your actual reCAPTCHA secret key
+        payload = {
+            'secret': secret_key,
+            'response': recaptcha_response
+        }
+        response = requests.post('https://www.google.com/recaptcha/api/siteverify', data=payload)
+        result = response.json()
+
+        if result['success']:
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            # Custom authentication logic
+            user = authenticate_user(username, password)
+
+            if user is not None:
+                # Authentication successful
+                request.session['user_id'] = user.id
+                request.session['username'] = user.username
+                return redirect(f'/main/{username}')
+            else:
+                # Authentication failed
+                error_message = "Invalid username or password"
+                return render(request, 'signup.html', {'error_message': error_message})
+        else:
+            return render(request, 'signup.html')
 
 
 def authenticate_user(username, password):
@@ -144,6 +202,8 @@ def authenticate_user(username, password):
             return None  # Password doesn't match
     except User.DoesNotExist:
         return None  # User with the provided username doesn't exist
+
+
 def new(request, username):
     if request.method == 'POST':
         form = BlogForm(request.POST)
@@ -155,8 +215,5 @@ def new(request, username):
     else:
         form = BlogForm()
 
-    # Pass the username to the template context
     context = {'form': form, 'username': username}
-    return render(request, 'your blogs.html', context)
-
-
+    return render(request, 'create.html', context)
